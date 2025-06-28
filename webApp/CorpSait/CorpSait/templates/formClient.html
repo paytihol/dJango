@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Форма создания клиента</title>
+</head>
+<body>
+    <h1>Создание клиента</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{form.as_p}}
+        <button type="submit">Создать</button>
+    </form>
+
+</body>
+</html>

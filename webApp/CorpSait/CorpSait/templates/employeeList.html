@@ -1,0 +1,32 @@
+
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Поиск сотрудников</title>
+</head>
+<body>
+<h1>Поиск сотрудников</h1>
+
+
+
+<form method="get" action="{% url 'search_Employees' %}">
+    <input type="text" name="q" placeholder="Поиск по имени" value="{{ request.GET.q }}">
+    <select name="team">
+        <option value="">Выберите команду</option>
+        {% for team in teams %}
+        <option value="{{ team.id }}" {% if team.id|stringformat:"s" == selected_team %}selected{% endif %}>{{ team.name }}</option>
+        {% endfor %}
+    </select>
+    <button type="submit">Поиск</button>
+</form>
+
+
+<ul>
+    {% for employee in employees %}
+    <li>{{ employee.name }}</li>
+    {% endfor %}
+</ul>
+</body>
+</html>
